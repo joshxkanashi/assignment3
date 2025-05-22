@@ -5,6 +5,8 @@ let secondCardImg = undefined
 
 let locked = false
 
+var clickCounter = 0
+
 const onCardClick = async function (e) {
   if (locked)
     return
@@ -27,6 +29,13 @@ const onCardClick = async function (e) {
         console.log("match");
         firstCardImg.parentNode.removeEventListener("click", onCardClick)
         secondCardImg.parentNode.removeEventListener("click", onCardClick)
+        matchedPairs++;
+        document.getElementById("totalMatches").textContent = matchedPairs
+        pairsRemaining--;
+        document.getElementById("pairsLeft").textContent = pairsRemaining
+        if (matchedPairs === totalPairs) {
+          endGame(true);
+        }
         resolve()
       }
       else {

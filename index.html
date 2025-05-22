@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div id="cards-grid">
-      <div class="card" id="card1">
-        <img src="001.png" class="card-front-face" alt="" />
-        <img src="back.webp" class="card-back-face" alt="" />
-      </div>
-      <div class="card" id="card2">
-        <img src="003.png" class="card-front-face" alt="" />
-        <img src="back.webp" class="card-back-face" alt="" />
-      </div>
-      <div class="card" id="card3">
-        <img src="002.png" class="card-front-face" alt="" />
-        <img src="back.webp" class="card-back-face" alt="" />
-      </div>
-      <div class="card" id="card4">
-        <img src="003.png" class="card-front-face" alt="" />
-        <img src="back.webp" class="card-back-face" alt="" />
-      </div>
-      <div class="card" id="card5">
-        <img src="002.png" class="card-front-face" alt="" />
-        <img src="back.webp" class="card-back-face" alt="" />
-      </div>
-      <div class="card" id="card6">
-        <img src="001.png" class="card-front-face" alt="" />
-        <img src="back.webp" class="card-back-face" alt="" />
-      </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+
+<body id="background">
+  <div id="game-buttons">
+    <div id="difficulty-buttons">
+      <button class="easy-button" id="easyButton">Easy</button>
+      <button class="normal-button" id="normalButton">Normal</button>
+      <button class="hard-button" id="hardButton">Hard</button>
     </div>
-  </body>
-  <script src="code.js"></script>
+    <div id="control-buttons">
+      <button class="reset-button" id="resetButton">Reset</button>
+      <button class="start-button" id="startButton">Start</button>
+    </div>
+  </div>
+  <div id="stats">
+    <h1>Card Clicks <span id="cardClicker">0</span> </h1>
+    <h1>Total number of pairs <span id="totalPairs"></span></h1>
+    <h1>Number of matches <span id="totalMatches"></span></h1>
+    <h1>Pairs remaining <span id="pairsLeft"></span></h1>
+    <h1>You have <span id="gameTimer"></span>. <span id="gameTimerElapsed"></span> seconds passed. </h1>
+  </div>
+  <div id="cards-grid" style="display: none;">
+  </div>
+  <div id="bottom-buttons" style="display: none;">
+    <button class="dark-mode-btn" id="darkmodeButton">Dark</button>
+    <button class="light-mode-btn" id="lightmodeButton">Light</button>
+  </div>
+</body>
+<script src="code.js"></script>
+<script src="appearance.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="game.js"></script>
+
 </html>

@@ -2,13 +2,23 @@
   display: flex;
   flex-wrap: wrap;
   border: 1px solid black;
-  width: 600px;
-  height: 400px;
   margin: auto;
 }
 
+#game-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+#bottom-buttons {
+  display: flex;
+  justify-content: center;
+}
+
 .card {
-  flex-basis: 33.3%;
+
   position: relative;
 
   transition-property: transform;
@@ -34,4 +44,120 @@
 
 img {
   width: 100%;
+}
+
+h1 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  font-size: x-large
+}
+
+.reset-button {
+  background-color: rgb(74, 201, 255);
+  color: white;
+  border: 2px solid rgb(74, 201, 255);
+  border-radius: 5px;
+  padding: 8px 8px;
+  transition-duration: 0.4s;
+}
+
+.reset-button:hover {
+  background-color: white;
+  color: black;
+}
+
+.start-button {
+  background-color: rgb(74, 201, 255);
+  color: white;
+  border: 2px solid rgb(74, 201, 255);
+  border-radius: 5px;
+  padding: 8px 8px;
+  transition-duration: 0.4s;
+}
+
+.start-button:hover {
+  background-color: white;
+  color: black;
+}
+
+.selected-difficulty {
+  box-shadow: 0 0 10px 2px #333;
+  border-width: 3px;
+  border-color: #333;
+  filter: brightness(1.2);
+}
+
+.easy-button {
+  background-color: rgb(163, 255, 155);
+  color: black;
+  border: 2px solid rgb(19, 230, 0);
+  border-radius: 5px;
+  padding: 8px 8px;
+  transition-duration: 0.4s;
+}
+
+.easy-button:hover {
+  background-color: rgb(84, 255, 69);
+}
+
+.normal-button {
+  background-color: rgb(255, 220, 144);
+  color: black;
+  border: 2px solid rgb(243, 146, 0);
+  border-radius: 5px;
+  padding: 8px 8px;
+  transition-duration: 0.4s;
+}
+
+.normal-button:hover {
+  background-color: rgb(253, 185, 60);
+}
+
+.hard-button {
+  background-color: rgb(255, 168, 162);
+  color: black;
+  border: 2px solid rgb(255, 27, 27);
+  border-radius: 5px;
+  padding: 8px 8px;
+  transition-duration: 0.4s;
+}
+
+.hard-button:hover {
+  background-color: rgb(255, 87, 87);
+}
+
+.dark-mode {
+  background-color: #000000;
+  transition-duration: 0.4s
+}
+
+.light-mode {
+  background-color: white;
+  transition-duration: 0.4s;
+}
+
+.dark-mode-btn {
+  background-color: black;
+  color: white;
+  border: 2px solid #000000;
+  border-radius: 5px;
+  padding: 8px 8px;
+  transition-duration: 0.4s;
+}
+
+.dark-mode-btn:hover {
+  background-color: #575757;
+}
+
+.light-mode-btn {
+  background-color: white;
+  color: black;
+  border: 2px solid #000000;
+  border-radius: 5px;
+  padding: 8px 8px;
+  transition-duration: 0.4s;
+}
+
+.light-mode-btn:hover {
+  background-color: #e2e2e2;
 }
