@@ -60,21 +60,60 @@ const generatePokemon = (pairMatch, basis) => {
 
 	var pokemonCounter = 0;
 	let cardsCreated = 0;
-	allIds.forEach(pokemonId => {
-		axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
-			.then(response => {
-				const pokemonData = response.data;
-				pokemonCounter++;
-				cardTemplate(`https://img.pokemondb.net/sprites/home/normal/${pokemonData.name}.png`, pokemonCounter);
-				cardsCreated++;
-				// When all cards are created, set flex-basis
-				if (cardsCreated === allIds.length) {
-					setCardFlexBasis(basis);
-				}
-			})
-			.catch(error => {
-				console.error('Error fetching Pokemon:', error);
-			});
+	let cardElements = []; // Array to store all card elements
+
+	// Create a promise for each Pokemon card
+	const cardPromises = allIds.map(pokemonId => {
+		return new Promise((resolve) => {
+			axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
+				.then(response => {
+					const pokemonData = response.data;
+					pokemonCounter++;
+
+					// Create card element but don't append it yet
+					const card = document.createElement("div");
+					card.classList.add("card");
+					card.id = `card${pokemonCounter}`;
+
+					const pokemonImg = document.createElement("img");
+					pokemonImg.src = `https://img.pokemondb.net/sprites/home/normal/${pokemonData.name}.png`;
+					pokemonImg.classList.add("card-front-face");
+
+					const backcardImg = document.createElement("img");
+					backcardImg.src = "back.webp";
+					backcardImg.classList.add("card-back-face");
+
+					card.appendChild(pokemonImg);
+					card.appendChild(backcardImg);
+
+					card.addEventListener("click", function () {
+						clickCounter++;
+						document.getElementById("cardClicker").textContent = `${clickCounter}`;
+					});
+					card.addEventListener("click", onCardClick);
+
+					resolve(card);
+				})
+				.catch(error => {
+					console.error('Error fetching Pokemon:', error);
+					resolve(null); // Resolve with null for failed requests
+				});
+		});
+	});
+
+	// Wait for all cards to be created, then shuffle and append them
+	Promise.all(cardPromises).then(cards => {
+		// Filter out any null values from failed requests
+		cards = cards.filter(card => card !== null);
+		// Shuffle the cards array
+		shuffle(cards);
+		// Append all cards to the container
+		const cardsContainer = document.getElementById("cards-grid");
+		cards.forEach(card => {
+			cardsContainer.appendChild(card);
+		});
+		// Set flex basis after all cards are appended
+		setCardFlexBasis(basis);
 	});
 }
 
